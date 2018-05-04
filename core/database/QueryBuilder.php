@@ -40,24 +40,33 @@ class QueryBuilder
     /**
      * Insert a record into a table.
      *
-     * @param  string $table
-     * @param  array  $parameters
+     * @param string $table
+     * @param string  $parameters
+     * @param string $values
      */
-    public function insert($table, $parameters)
+    public function insert($table, $parameters, $values)
     {
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ', array_keys($parameters)),
-            ':' . implode(', :', array_keys($parameters))
-        );
+        $sql = "INSERT INTO {$table} {$parameters} VALUES ({$values})";
 
         try {
             $statement = $this->pdo->prepare($sql);
-
-            $statement->execute($parameters);
+            $statement->execute();
         } catch (\Exception $e) {
-            //
+            var_dump($e);
         }
     }
+
+    /**
+     * Select with filtering
+     *
+     * @param string $table
+     * @param string $condition
+     */
+    public function selectFilter($table, $condition) {
+        $sql = "SELECT * FROM {$table} WHERE {$condition}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS);
+    }
+
 }

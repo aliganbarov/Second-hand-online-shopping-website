@@ -1,3 +1,14 @@
 <?php
 
 $router->get('', 'PagesController@index');
+
+$router->get('login', 'PagesController@login_page');
+$router->post('login', 'UserController@login');
+
+$router->get('logout', 'UserController@logout');
+
+$router->get('register', 'PagesController@register_page');
+$router->post('register', 'UserController@register');
+
+$router->get('add_product', 'PagesController@add_product');
+$router->post('product_save', 'ModelsController@product_save');
