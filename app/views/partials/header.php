@@ -9,6 +9,7 @@
 
 	 <!-- Latest compiled JavaScript -->
 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	 <script src="/public/js/add_product_select_list.js"></script>
 </head>
 	<body>
 	<?php

@@ -38,7 +38,7 @@ class QueryBuilder
     }
 
     /**
-     * Insert a record into a table.
+     * Insert a record into a table and return id.
      *
      * @param string $table
      * @param string  $parameters
@@ -46,11 +46,14 @@ class QueryBuilder
      */
     public function insert($table, $parameters, $values)
     {
-        $sql = "INSERT INTO {$table} {$parameters} VALUES ({$values})";
-
+        $sql = "INSERT INTO {$table} ({$parameters}) VALUES ({$values})";
+        echo("<br>");
+        var_dump($sql);
+        echo("<br>");
         try {
             $statement = $this->pdo->prepare($sql);
             $statement->execute();
+            return $this->pdo->lastInsertId();
         } catch (\Exception $e) {
             var_dump($e);
         }

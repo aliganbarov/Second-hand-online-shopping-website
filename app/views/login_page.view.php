@@ -34,3 +34,5 @@ require_once('Partials/header.php');
 	</div>
 </form>
 </div>
+
+<?php require_once('partials/footer.php'); ?>

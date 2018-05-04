@@ -19,7 +19,6 @@ class User {
 	protected $queryBuilder;
 
 	/*
-	 * Creates user and returns id
 	 * Instantiates queryBuilder
 	 *
 	 * @param string email
@@ -68,11 +67,10 @@ class User {
 	 * Save user
 	 */
 	public function save() {
-		$this->queryBuilder->insert('User', '(email, password, occupation, phone_number, 
-			name, location, dob, address)', "'{$this->email}', '{$this->password}', 
+		return $this->queryBuilder->insert('User', 'email, password, occupation, phone_number, 
+			name, location, dob, address', "'{$this->email}', '{$this->password}', 
 			'{$this->occupation}', '{$this->phone_number}', '{$this->name}', '$this->location', 
 			'{$this->dob}', '{$this->address}'");
-
 	}
 
 }
