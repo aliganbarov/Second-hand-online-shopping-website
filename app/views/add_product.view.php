@@ -38,8 +38,8 @@ require_once('Partials/header.php');
 
 	<div class="form-group">
 		<label class="control-label col-sm-4" for="product_type">Product Type:</label>
-		<select id="product_type" required name="product_type">
-			<option value="">--Select--</option>
+		<select id="product_type" name="product_type">
+			<option value="basic">--Select--</option>
 			<option value="pet" id="pet">Pet</option>
 			<option value="food" id="food">Food</option>
 			<option value="Cloth" id="cloth">Cloth</option>

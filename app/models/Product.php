@@ -42,12 +42,21 @@ class Product {
 
 
 	/**
-	 * Save product
+	 * Save product and return id
 	 */
 	public function save() {
+		// save pic
+		$uploaddir = 'public/pictures/';
+		$uploadfile = $uploaddir.basename($_FILES['picture']['name']);
+
+		if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
+			echo "File is valid, and was successfully uploaded.\n";
+		} else {
+			echo "Failed to upload file!\n";
+		}
 		return $this->queryBuilder->insert('Product', 'name, description, picture, stock_quantity, 
 			comp_page_id, user_id', "'{$this->name}', '{$this->description}', 
-			'{$this->picture}', {$this->stock_quantity}, {$this->comp_page_id}, 
+			'{$uploadfile}', {$this->stock_quantity}, {$this->comp_page_id}, 
 			{$this->user_id}");
 	}
 

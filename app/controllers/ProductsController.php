@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Product;
 use App\Models\Food;
 use App\Models\Pet;
 use App\Models\Cloth;
@@ -26,9 +27,21 @@ class ProductsController {
 			$this->createPet();
 		} else if ($_POST["product_type"] == "food") {
 			$this->createFood();
-		} else {
+		} else if ($_POST["product_type"] == "cloth") {
 			$this->createCloth();
+		} else {
+			$this->createProduct();
 		}
+	}
+
+	/**
+	 * Create basic product and redirect
+	 */
+	public function createProduct() {
+		$product = new Product($_POST["name"], $_POST["description"], $_POST["picture"], 
+			$_POST["stock_quantity"], $_SESSION["comp_page_id"], $_SESSION["user_id"]);
+		$product->save();
+		return redirect('my_products');
 	}
 
 	
