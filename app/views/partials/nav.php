@@ -13,16 +13,9 @@
 					<ul class="dropdown-menu">
 						<li><a href="/my_products">My Products</a></li>
 						<li><a href="/add_product">Add Product</a></li>
+						<li><a href="/my_posts">My Posts</a></li>
 					</ul>
 				</li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Posts
-				<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">My Posts</a></li>
-					<li><a href="#">Add Post</a></li>
-				</ul>
-			</li>
 			<?php endif; ?>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

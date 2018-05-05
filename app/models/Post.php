@@ -55,6 +55,21 @@ class Post {
 
 
 	/**
+	 * Get all posts of user
+	 */
+	public static function getAllPostsOfUser() {
+		$queryBuilder = new QueryBuilder();
+		$posts = $queryBuilder->selectFilter('Post', "user_id={$_SESSION["user_id"]}");
+		// attach related product and user to each post object
+		foreach ($posts as $post) {
+			$product = $queryBuilder->selectFilter('Product', "id={$post->product_id}");
+			$post->product = $product;
+		}
+		return $posts;
+	}
+
+
+	/**
 	 * Save the Post
 	 */
 	public function save() {
@@ -62,5 +77,16 @@ class Post {
 		$queryBuilder->insert("Post", "user_id, region, duration, date_, product_id, apartment_id, price", 
 			"{$this->user_id}, '{$this->region}', '{$this->duration}', CURDATE(), {$this->product_id}, 
 			{$this->apartment_id}, '{$this->price}'");
-	} 
+	}
+
+
+	/**
+	 * Delete Post
+	 *
+	 * @param int $id
+	 */
+	public function delete($id) {
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->delete("Post", "id={$id}");
+	}
 }

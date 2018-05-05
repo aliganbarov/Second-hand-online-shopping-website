@@ -70,4 +70,12 @@ class PagesController {
 		return view('post_product');
 	}
 
+
+	/**
+	 * Show the my posts page
+	 */
+	public function my_posts() {
+		return view('my_posts', Post::getAllPostsOfUser());
+	}
+
 }

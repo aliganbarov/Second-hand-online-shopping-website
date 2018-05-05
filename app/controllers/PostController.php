@@ -7,7 +7,7 @@ use App\Models\Post;
 class PostController {
 
 	/**
-	 * Post product
+	 * Post product and redirect
 	 */
 	public function post_product() {
 		if (!isset($_POST["product_id"])) {
@@ -19,7 +19,16 @@ class PostController {
 		$post = new Post($_SESSION["user_id"], $_POST["region"], $_POST["duration"], 
 				$_GET["id"], $_POST["apartment_id"], $_POST["price"]);
 		$post->save();
-		return redirect("my_products");
+		return redirect("my_posts");
+	}
+
+
+	/**
+	 * Delete post and redirect
+	 */
+	public function delete_post() {
+		Post::delete($_GET["id"]);
+		return redirect("my_posts");
 	}
 
 }
