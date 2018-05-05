@@ -16,10 +16,11 @@ class Product {
 	protected $stock_quantity;
 	protected $comp_page_id;
 	protected $user_id;
+	protected $product_type;
 
 	protected $queryBuilder;
 
-	/*
+	/**
 	 * Instantiates queryBuilder
 	 *
 	 * @param string name
@@ -28,14 +29,17 @@ class Product {
 	 * @param int stock_quantity
 	 * @param int comp_page_id
 	 * @param int user_id
+	 * @param string product_type
 	 */
-	public function __construct($name, $description, $picture, $stock_quantity, $comp_page_id=null, $user_id=null) {
+	public function __construct($name, $description, $picture, $stock_quantity, 
+							$comp_page_id=null, $user_id=null, $product_type="Basic") {
 		$this->name = $name;
 		$this->description = $description;
 		$this->picture = $picture;
 		$this->stock_quantity = $stock_quantity;
 		$this->comp_page_id = $comp_page_id;
 		$this->user_id = $user_id;
+		$this->product_type = $product_type;
 
 		$this->queryBuilder = new QueryBuilder();
 	}
@@ -55,9 +59,9 @@ class Product {
 			echo "Failed to upload file!\n";
 		}
 		return $this->queryBuilder->insert('Product', 'name, description, picture, stock_quantity, 
-			comp_page_id, user_id', "'{$this->name}', '{$this->description}', 
+			comp_page_id, user_id, product_type', "'{$this->name}', '{$this->description}', 
 			'{$uploadfile}', {$this->stock_quantity}, {$this->comp_page_id}, 
-			{$this->user_id}");
+			{$this->user_id}, '{$this->product_type}'");
 	}
 
 
@@ -80,5 +84,46 @@ class Product {
 		}
 		return $products;
 	}
+
+
+	/**
+	 * Delete product
+	 *
+	 * @param int $id
+	 */
+	public static function delete($id) {
+		Food::delete($id);
+		Pet::delete($id);
+		Cloth::delete($id);
+
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->delete('Product', "id={$id}");
+	}
+
+
+	/**
+	 * Get product
+	 *
+	 * @param $id
+	 */
+	public static function getProduct($id) {
+		$queryBuilder = new QueryBuilder();
+		$product = $queryBuilder->selectFilter('Product', "id={$id}");
+		$product[0]->food = Food::getFood($id);
+		$product[0]->pet = Pet::getPet($id);
+		$product[0]->cloth = Cloth::getCloth($id);
+		return $product;
+	}
+
+
+	/**
+	 * Update product
+	 */
+	public static function update($id, $name, $description, $stock_quantity) {
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->update('Product', "name='{$name}', description='{$description}', 
+			stock_quantity={$stock_quantity}", "id={$id}");
+	}
+
 
 }

@@ -46,4 +46,28 @@ class PagesController {
 		return view('my_products', Product::getAllProductsOfUser());
 	}
 
+
+	/**
+	 * Show the edit product page
+	 */
+	public function edit_product() {
+		return view('edit_product', Product::getProduct($_GET["id"]));
+	}
+
+
+	/**
+	 * Show the product details page
+	 */
+	public function product_details() {
+		return view('product_details', Product::getProduct($_GET["id"]));
+	}
+
+
+	/**
+	 * Show the post product page
+	 */
+	public function post_product() {
+		return view('post_product');
+	}
+
 }

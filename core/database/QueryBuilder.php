@@ -72,4 +72,31 @@ class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
+
+    /**
+     * Delete from table
+     *
+     * @param string $table
+     * @param string $condition
+     */
+    public function delete($table, $condition) {
+        $sql = "DELETE FROM {$table} WHERE {$condition}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+    }
+
+
+    /**
+     * Update table row
+     *
+     * @param string $table
+     * @param string $setValues
+     * @param string $condition
+     */
+    public function update($table, $setValues, $condition) {
+        $sql = "UPDATE {$table} SET {$setValues} WHERE {$condition}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+    }
+
 }

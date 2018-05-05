@@ -31,6 +31,5 @@ class Post {
 		}
 
 		return $posts;
-		
 	}
 }

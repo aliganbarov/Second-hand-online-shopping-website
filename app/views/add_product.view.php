@@ -42,7 +42,7 @@ require_once('Partials/header.php');
 			<option value="basic">--Select--</option>
 			<option value="pet" id="pet">Pet</option>
 			<option value="food" id="food">Food</option>
-			<option value="Cloth" id="cloth">Cloth</option>
+			<option value="cloth" id="cloth">Cloth</option>
 		</select>
 	</div>
 

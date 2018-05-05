@@ -13,4 +13,13 @@ $router->post('register', 'UserController@register');
 $router->get('add_product', 'PagesController@add_product');
 $router->post('add_product', 'ProductsController@product_save');
 
+$router->get('product_details', 'PagesController@product_details');
+$router->get('delete_product', 'ProductsController@delete_product');
+
+$router->get('edit_product', 'PagesController@edit_product');
+$router->post('edit_product', 'ProductsController@update_product');
+
 $router->get('my_products', 'PagesController@my_products');
+
+$router->get('post_product', 'PagesController@post_product');
+$router->post('post_product', 'PostController@post_product');

@@ -26,7 +26,7 @@ class Food extends Product {
 	 */
 	public function __construct($type, $time_of_preparation, $name, $description, $picture,
 								$stock_quantity, $comp_page_id, $user_id) {
-		parent::__construct($name, $description, $picture, $stock_quantity, $comp_page_id, $user_id);
+		parent::__construct($name, $description, $picture, $stock_quantity, $comp_page_id, $user_id, 'Food');
 		$this->type = $type;
 		$this->time_of_preparation = $time_of_preparation;
 	}
@@ -51,5 +51,37 @@ class Food extends Product {
 	public static function getFood($id) {
 		$queryBuilder = new QueryBuilder();
 		return $queryBuilder->selectFilter('Food', "id={$id}");
-	} 
+	}
+
+
+	/**
+	 * Delete food
+	 *
+	 * @param int $id
+	 */
+	public static function delete($id) {
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->delete('Food', "id={$id}");
+	}
+
+
+	/**
+	 * Update Food
+	 *
+	 * @param string type
+	 * @param string time_of_preparation
+	 * @param string name
+	 * @param string description
+	 * @param string picture
+	 * @param int stock_quantity
+	 * @param int comp_page_id
+	 * @param int user_id
+	 */
+	public static function updateFood($id, $name, $description, $stock_quantity,
+								 $type, $time_of_preparation) {
+		parent::update($id, $name, $description, $stock_quantity);
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->update('Food', "type_='{$type}', time_of_preparation='{$time_of_preparation}'",
+							 "id={$id}");
+	}
 }

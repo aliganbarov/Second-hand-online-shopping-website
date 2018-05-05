@@ -28,7 +28,7 @@ class Pet extends Product {
 	 */
 	public function __construct($gender, $breed, $age, $time_spent_with_owner, $name, 
 								$description, $picture, $stock_quantity, $comp_page_id, $user_id) {
-		parent::__construct($name, $description, $picture, $stock_quantity, $comp_page_id, $user_id);
+		parent::__construct($name, $description, $picture, $stock_quantity, $comp_page_id, $user_id, 'Pet');
 		$this->gender = $gender;
 		$this->breed = $breed;
 		$this->age = $age;
@@ -56,5 +56,39 @@ class Pet extends Product {
 		$queryBuilder = new QueryBuilder();
 		return $queryBuilder->selectFilter('Pet', "id={$id}");
 	} 
+
+
+	/**
+	 * Delete pet
+	 *
+	 * @param int $id
+	 */
+	public static function delete($id) {
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->delete('Pet', "id={$id}");
+	}
+
+
+	/**
+	 * Update Pet
+	 *
+	 * @param string gender
+	 * @param string breed
+	 * @param float age
+	 * @param int time_spent_with_owner
+	 * @param string name
+	 * @param string description
+	 * @param string picture
+	 * @param int stock_quantity
+	 * @param int comp_page_id
+	 * @param int user_id
+	 */
+	public static function updatePet($id, $name, $description, $stock_quantity, 
+								$gender, $breed, $age, $time_spent_with_owner) {
+		parent::update($id, $name, $description, $stock_quantity);
+		$queryBuilder = new QueryBuilder();
+		$queryBuilder->update('Pet', "gender='{$gender}', breed='{$breed}', 
+			age={$age}, time_spent_with_owner={$time_spent_with_owner}", "id={$id}");
+	}
 
 }
