@@ -42,4 +42,14 @@ class Food extends Product {
 			"'{$parent_id}', '{$this->type}', '{$this->time_of_preparation}'");
 	}
 
+
+	/**
+	 * Get Food
+	 *
+	 * @param int id
+	 */
+	public static function getFood($id) {
+		$queryBuilder = new QueryBuilder();
+		return $queryBuilder->selectFilter('Food', "id={$id}");
+	} 
 }

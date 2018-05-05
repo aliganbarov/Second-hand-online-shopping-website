@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Product;
 
 class PagesController {
 
@@ -42,7 +43,7 @@ class PagesController {
 	 * Show the my_products page
 	 */
 	public function my_products() {
-		
+		return view('my_products', Product::getAllProductsOfUser());
 	}
 
 }

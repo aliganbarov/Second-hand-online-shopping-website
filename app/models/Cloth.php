@@ -42,10 +42,19 @@ class Cloth extends Product {
 	public function save() {
 		$queryBuilder = new QueryBuilder();
 		$parent_id = parent::save();
-		$cloth_id = $queryBuilder->insert('Cloth', 'id, size, color, type_', 
-				"{$parent_id}, '{$this->size}', '{$this->color}', '{$this->type}'");
-		// insert material
-		$queryBuilder->insert('ClothMaterial', 'cloth_id, material', 
-				"{$parent_id}, '{$this->material}'");
+		$cloth_id = $queryBuilder->insert('Cloth', 'id, size, color, type_, material', 
+				"{$parent_id}, '{$this->size}', '{$this->color}', '{$this->type}', '{$this->material}'");
 	}
+
+
+	/**
+	 * Get Cloth
+	 *
+	 * @param int id
+	 */
+	public static function getCloth($id) {
+		$queryBuilder = new QueryBuilder();
+		$cloth = $queryBuilder->selectFilter('Cloth', "id={$id}");
+		return $cloth;
+	} 
 }

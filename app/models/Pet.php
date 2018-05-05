@@ -46,4 +46,15 @@ class Pet extends Product {
 				"'{$parent_id}', '{$this->gender}', '{$this->breed}', '{$this->age}', '{$this->time_spent_with_owner}'");
 	}
 
+
+	/**
+	 * Get Pet
+	 *
+	 * @param int id
+	 */
+	public static function getPet($id) {
+		$queryBuilder = new QueryBuilder();
+		return $queryBuilder->selectFilter('Pet', "id={$id}");
+	} 
+
 }

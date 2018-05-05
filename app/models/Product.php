@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Core\Database\QueryBuilder;
+use App\Models\Food;
+use App\Models\Pet;
+use App\Models\Cloth;
 
 class Product {
 
@@ -46,6 +49,27 @@ class Product {
 			comp_page_id, user_id', "'{$this->name}', '{$this->description}', 
 			'{$this->picture}', {$this->stock_quantity}, {$this->comp_page_id}, 
 			{$this->user_id}");
+	}
+
+
+	/**
+	 * Get all products of current user
+	 */
+	public static function getAllProductsOfUser() {
+		$queryBuilder = new QueryBuilder();
+		if (isset($_SESSION["user_id"])) {
+			$products = $queryBuilder->selectFilter('Product', "user_id={$_SESSION["user_id"]}");
+		} else if (isset($_SESSION["company_id"])) {
+			$products = $queryBuilder->selectFilter('Product', "comp_page_id={$_SESSION["company_id"]}");
+		}
+
+		// attach food, pet and cloth
+		foreach($products as $product) {
+			$product->food = Food::getFood($product->id);
+			$product->pet = Pet::getPet($product->id);
+			$product->cloth = Cloth::getCloth($product->id);
+		}
+		return $products;
 	}
 
 }
