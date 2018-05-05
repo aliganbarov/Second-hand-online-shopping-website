@@ -25,6 +25,7 @@ class UserController {
 		if ($user) {
 			if ($user[0]->password == $_POST["password"]) {
 				$_SESSION["login"] = true;
+				$_SESSION["user_id"] = $user[0]->id;
 				return redirect('');
 			}
 		}

@@ -37,4 +37,12 @@ class PagesController {
 		return view('add_product');
 	}
 
+
+	/**
+	 * Show the my_products page
+	 */
+	public function my_products() {
+		
+	}
+
 }

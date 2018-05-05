@@ -90,7 +90,11 @@ require_once('Partials/header.php');
  	var sizeForm = "<div class='form-group'><label class='control-label col-sm-4' for='size'>Size:</label><select name='size'><option>XXS</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></div>";
  	var colorForm = "<div class='form-group'><label class='control-label col-sm-4' for='color'>Color:</label><div class='col-sm-8'><input name='color' required type='text' class='form-control' id='color' placeholder='Enter Color'></div></div>";
  	var clothTypeForm = "<div class='form-group'><label class='control-label col-sm-4' for='type'>Type:</label><div class='col-sm-8'><input name='type' required type='text' class='form-control' id='type' placeholder='Enter Type'></div></div>";
- 	var material = "<div class='form-group'><label class='control-label col-sm-4' for='material'>Material:</label><div class='col-sm-8'><input name='material' required type='text' class='form-control' id='material' placeholder='Enter Material'></div></div>";
+ 	var material = "<div class='form-group'>\
+ 						<label class='control-label col-sm-4' for='material'>Material:</label>\
+ 						<div class='col-sm-8'><input name='material' required type='text' class='form-control' id='material' placeholder='Enter Material'>\
+ 						</div>\
+ 					</div>";
 
 </script>
 

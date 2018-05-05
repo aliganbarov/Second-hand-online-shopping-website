@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Food;
+use App\Models\Pet;
+use App\Models\Cloth;
 
 class ProductsController {
 
@@ -10,7 +12,16 @@ class ProductsController {
 	 * Save product
 	 */
 	public function product_save() {
-	
+		if (!isset($_SESSION["user_id"])) {
+			$_SESSION["user_id"] = "NULL";
+		}
+		if (!isset($_SESSION["comp_page_id"])) {
+			$_SESSION["comp_page_id"] = "NULL";
+		}
+		if (!isset($_POST["picture"])) {
+			$_POST["picture"] = "NULL";
+		}
+
 		if ($_POST["product_type"] == "pet") {
 			$this->createPet();
 		} else if ($_POST["product_type"] == "food") {
@@ -20,24 +31,40 @@ class ProductsController {
 		}
 	}
 
+	
 	/**
-	 * Create new Food
+	 * Create new Food and redirect
 	 */
 	public function createFood() {
-		if (!isset($_POST["user_id"])) {
-			$_POST["user_id"] = "NULL";
-		}
-		if (!isset($_POST["comp_page_id"])) {
-			$_POST["comp_page_id"] = "NULL";
-		}
-		if (!isset($_POST["picture"])) {
-			$_POST["picture"] = "NULL";
-		}
 		$food = new Food($_POST["type"], $_POST["time_of_preparation"], $_POST["name"], 
 			$_POST["description"], $_POST["picture"], $_POST["stock_quantity"], 
-			$_POST["comp_page_id"], $_POST["user_id"]);
-		$id = $food->save();
-		
+			$_SESSION["comp_page_id"], $_SESSION["user_id"]);
+		$food->save();
+		return redirect('my_products');
+	}
+
+
+	/**
+	 * Create new Pet and redirect
+	 */
+	public function createPet() {
+		$pet = new Pet($_POST["gender"], $_POST["breed"], $_POST["age"], $_POST["time_spent_with_owner"], 
+			$_POST["name"], $_POST["description"], $_POST["picture"], $_POST["stock_quantity"], 
+			$_SESSION["comp_page_id"], $_SESSION["user_id"]);
+		$pet->save();
+		return redirect('my_products');
+	}
+
+
+	/**
+	 * Create new Cloth and redirect
+	 */
+	public function createCloth() {
+		$cloth = new Cloth($_POST["size"], $_POST["color"], $_POST["type"], $_POST["material"], 
+			$_POST["name"], $_POST["description"], $_POST["picture"], $_POST["stock_quantity"], 
+			$_SESSION["comp_page_id"], $_SESSION["user_id"]);
+		$cloth->save();
+		return redirect('my_products');
 	}
 
 

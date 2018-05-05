@@ -12,3 +12,5 @@ $router->post('register', 'UserController@register');
 
 $router->get('add_product', 'PagesController@add_product');
 $router->post('add_product', 'ProductsController@product_save');
+
+$router->get('my_products', 'PagesController@my_products');
