@@ -42,13 +42,14 @@ class Post {
 	public static function getAllPosts() {
 		$queryBuilder = new QueryBuilder();
 		$posts = $queryBuilder->selectAll('Post');
-		// attach related product and user to each post object
+		// attach related product, apartment and user to each post object
 		foreach ($posts as $post) {
-			$product = $queryBuilder->selectFilter('Product', "id={$post->product_id}");
-			$post->product = $product;
-
-			$user = $queryBuilder->selectFilter('User', "id={$post->user_id}");
-			$post->user = $user;
+			if (isset($post->product_id)) {
+				$post->product = $queryBuilder->selectFilter('Product', "id={$post->product_id}");
+			} else {
+				$post->apartment = $queryBuilder->selectFilter('Apartment', "id={$post->apartment_id}");
+			}
+			$post->user = $queryBuilder->selectFilter('User', "id={$post->user_id}");
 		}
 
 		return $posts;
