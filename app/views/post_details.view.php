@@ -6,9 +6,12 @@ require_once("partials/header.php");
 
 ?>
 <div class="container">
-	<div class="row col-md-8 col-md-offset-2 text-center">
-		<img class="img-thumbnail img-responsive" style="height:200px" src="<?= $post->product[0]->picture ?>">
-	</div>
+	<h1 class="text-center">Post Details</h1>
+	<?php if(!isset($post->apartment)): ?>
+		<div class="row col-md-8 col-md-offset-2 text-center">
+			<img class="img-thumbnail img-responsive" style="height:200px" src="<?= $post->product[0]->picture ?>">
+		</div>
+	<?php endif; ?>
 	<div class="row">
 		<table class="table-bordered table-responsive table-hover col-md-8 col-md-offset-2">
 			<tr>
@@ -85,6 +88,20 @@ require_once("partials/header.php");
 						<td class="text-center"><?= $post->product[0]->cloth[0]->material ?></td>
 					</tr>
 				<?php endif; ?>
+			<?php endif; ?>
+			<?php if(isset($post->apartment)): ?>
+				<tr>
+					<th class="col-md-2 text-center">Type</th>
+					<td class="text-center"><?= $post->apartment[0]->type_ ?></td>
+				</tr>
+				<tr>
+					<th class="col-md-2 text-center"># of Rooms</th>
+					<td class="text-center"><?= $post->apartment[0]->no_of_rooms ?></td>
+				</tr>
+				<tr>
+					<th class="col-md-2 text-center">Address</th>
+					<td class="text-center"><?= $post->apartment[0]->address ?></td>
+				</tr>
 			<?php endif; ?>
 
 			<!-- ADD FIELDS FOR APARTMENT -->

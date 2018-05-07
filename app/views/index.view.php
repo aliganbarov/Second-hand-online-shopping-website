@@ -7,10 +7,12 @@
 
 <div class="container">
 	<div class="col-md-2 list-group">
-		<h3 class="text-center" id="post_content">Posts</h3>
+		<h3 class="text-center" id="post_content">Category</h3>
 		<ul>
 			<li class="list-group-item active" id="products_display">Products</li>
 			<li class="list-group-item" id="apartments_display">Apartments</li>
+			<li class="list-group-item" id="companies_display">Companies</li>
+			<li class="list-group-item" id="users_display">Users</li>
 		</ul>
 	</div>
 	<div class="col-md-8">
