@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\Apartment;
 
 class PagesController {
 
@@ -84,6 +85,22 @@ class PagesController {
 	 */
 	public function post_details() {
 		return view('post_details', Post::getPost($_GET["id"]));
+	}
+
+
+	/**
+	 * Show the add apartment page
+	 */
+	public function add_apartment() {
+		return view('add_apartment');
+	}
+
+
+	/**
+	 * Show the my apartments page
+	 */
+	public function my_apartments() {
+		return view('my_apartments', Apartment::getAllApartmentsOfUser($_SESSION["user_id"]));
 	}
 
 }

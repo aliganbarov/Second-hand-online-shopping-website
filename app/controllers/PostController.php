@@ -9,7 +9,7 @@ class PostController {
 	/**
 	 * Post product and redirect
 	 */
-	public function post_product() {
+	public function post() {
 		if (!isset($_POST["product_id"])) {
 			$_POST["product_id"] = 'NULL';
 		}

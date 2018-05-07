@@ -24,6 +24,15 @@ $router->post('edit_product', 'ProductsController@update_product');
 $router->get('my_products', 'PagesController@my_products');
 
 
+// APARTMENT ROUTES
+$router->get("add_apartment", "PagesController@add_apartment");
+$router->post("add_apartment", "ApartmentsController@add_apartment");
+
+$router->get('my_apartments', "PagesController@my_apartments");
+
+$router->get('delete_apartment', "ApartmentsController@delete_apartment");
+
+
 // POST ROUTES
 $router->get('post_product', 'PagesController@post_product');
 $router->post('post_product', 'PostController@post_product');

@@ -13,9 +13,18 @@
 					<ul class="dropdown-menu">
 						<li><a href="/my_products">My Products</a></li>
 						<li><a href="/add_product">Add Product</a></li>
-						<li ><a href="/my_posts">My Posts</a></li>
+						
 					</ul>
 				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Apartments
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/my_apartments">My Apartment</a></li>
+						<li><a href="/add_apartment">Add Apartment</a></li>
+					</ul>
+				</li>
+				<li ><a href="/my_posts">My Posts</a></li>
 			<?php endif; ?>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
