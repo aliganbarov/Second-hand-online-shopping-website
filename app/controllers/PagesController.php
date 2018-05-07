@@ -76,7 +76,7 @@ class PagesController {
 	 * Show the my posts page
 	 */
 	public function my_posts() {
-		return view('my_posts', Post::getAllPostsOfUser());
+		return view('my_posts', Post::getAllPostsOfUser($_SESSION["user_id"]));
 	}
 
 
@@ -101,6 +101,14 @@ class PagesController {
 	 */
 	public function my_apartments() {
 		return view('my_apartments', Apartment::getAllApartmentsOfUser($_SESSION["user_id"]));
+	}
+
+
+	/**
+	 * Show the view_user page
+	 */
+	public function view_user() {
+		return view('view_user', User::getUserProfile($_GET["id"]));
 	}
 
 }

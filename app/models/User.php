@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Database\QueryBuilder;
+use App\Models\Post;
 
 class User {
 
@@ -71,6 +72,27 @@ class User {
 			name, location, dob, address', "'{$this->email}', '{$this->password}', 
 			'{$this->occupation}', '{$this->phone_number}', '{$this->name}', '$this->location', 
 			'{$this->dob}', '{$this->address}'");
+	}
+
+
+	/**
+	 * Get user profile
+	 *
+	 * @param int $id
+	 */
+	public static function getUserProfile($id) {
+		$queryBuilder = new QueryBuilder();
+		$user = $queryBuilder->selectFilter("User", "id={$id}");
+		$user[0]->posts = Post::getAllPostsOfUser($user[0]->id);
+		$user[0]->avg_rate = $queryBuilder->getUserAvgRate($user[0]->id);
+
+		$user[0]->comments = $queryBuilder->selectFilter("Comment", "to_user_id={$id}");
+		foreach($user[0]->comments as $comment) {
+			$comment->from_user = $queryBuilder->selectFilter("User", "id={$comment->from_user_id}");
+		}
+
+
+		return $user;
 	}
 
 }

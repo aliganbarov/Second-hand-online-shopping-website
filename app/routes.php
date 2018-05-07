@@ -42,3 +42,7 @@ $router->get('my_posts', 'PagesController@my_posts');
 $router->get('delete_post', 'PostController@delete_post');
 
 $router->get('post_details', 'PagesController@post_details');
+
+
+// USER ROUTES
+$router->get('view_user', 'PagesController@view_user');

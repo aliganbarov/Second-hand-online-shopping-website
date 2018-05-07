@@ -4,7 +4,8 @@
 			<a class="navbar-brand" href="/">Second-Hand Shop</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li ><a href="/">Home</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/companies">Companies</a></li>
 			<?php if (isset($_SESSION["login"])): ?>
 				<li ><a href="/">Profile</a></li>
 				<li class="dropdown">

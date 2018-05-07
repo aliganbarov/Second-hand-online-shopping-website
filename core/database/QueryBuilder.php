@@ -99,4 +99,27 @@ class QueryBuilder
         $statement->execute();
     }
 
+
+    /**
+     * Get average user rating
+     *
+     * @param int $id
+     */
+    public function getUserAvgRate($id) {
+        $sql = "SELECT AVG(rate) AS avg_rate FROM rates WHERE to_user_id={$id}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS);
+    }
+
+
+    /**
+     * Get all comments received by user
+     *
+     * @param int $id
+     */
+    public function getUserComments($id) {
+        
+    }
+
 }

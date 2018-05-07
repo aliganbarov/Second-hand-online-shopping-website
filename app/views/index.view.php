@@ -11,8 +11,6 @@
 		<ul>
 			<li class="list-group-item active" id="products_display">Products</li>
 			<li class="list-group-item" id="apartments_display">Apartments</li>
-			<li class="list-group-item" id="companies_display">Companies</li>
-			<li class="list-group-item" id="users_display">Users</li>
 		</ul>
 	</div>
 	<div class="col-md-8">
@@ -34,7 +32,7 @@
 					<?php foreach($posts as $post): ?>
 						<?php if (isset($post->product_id)): ?>
 							<tr>
-								<td><?= $post->user[0]->name ?></td>
+								<td><a href="view_user?id=<?= $post->user[0]->id ?>"><?= $post->user[0]->name ?></a></td>
 								<td><?= $post->region ?></td>
 								<td><?= $post->product[0]->name ?> </td>
 								<td><?= $post->product[0]->description ?> </td>
@@ -66,7 +64,7 @@
 					<?php foreach($posts as $post): ?>
 						<?php if (isset($post->apartment_id)): ?>
 							<tr>
-								<td><?= $post->user[0]->name ?></td>
+								<td><a href="view_user?id=<?= $post->user[0]->id ?>"><?= $post->user[0]->name ?></a></td>
 								<td><?= $post->region ?></td>
 								<td><?= $post->apartment[0]->type_ ?> </td>
 								<td><?= $post->apartment[0]->no_of_rooms ?> </td>
