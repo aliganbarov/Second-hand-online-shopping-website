@@ -46,3 +46,7 @@ $router->get('post_details', 'PagesController@post_details');
 
 // USER ROUTES
 $router->get('view_user', 'PagesController@view_user');
+
+$router->get('rate_user', 'UserController@rate_user');
+
+$router->post('add_comment', 'UserController@add_comment');

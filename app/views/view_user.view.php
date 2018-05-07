@@ -159,6 +159,12 @@
 				</a>
 			<?php endforeach; ?>
 		</div>
+		<form class="form-group" action="add_comment" method="post">
+			<label for="exampleTextarea">Enter Comment</label>
+			<textarea name="comment" class="form-control" rows="3"></textarea>
+			<input hidden name="to_user_id" value="<?= $user->id ?>">
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
 	</div>
 </div>
 
