@@ -34,8 +34,8 @@ $router->get('delete_apartment', "ApartmentsController@delete_apartment");
 
 
 // POST ROUTES
-$router->get('post_product', 'PagesController@post_product');
-$router->post('post_product', 'PostController@post_product');
+$router->get('post', 'PagesController@post');
+$router->post('post', 'PostController@post');
 
 $router->get('my_posts', 'PagesController@my_posts');
 

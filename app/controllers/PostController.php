@@ -10,15 +10,17 @@ class PostController {
 	 * Post product and redirect
 	 */
 	public function post() {
-		if (!isset($_POST["product_id"])) {
-			$_POST["product_id"] = 'NULL';
-		}
-		if (!isset($_POST["apartment_id"])) {
-			$_POST["apartment_id"] = "NULL";
+		if (!isset($_POST["apartment"])) {
+			$product_id = $_GET["id"];
+			$apartment_id = "NULL";
+		} else {
+			$product_id = "NULL";
+			$apartment_id = $_GET["id"];
 		}
 		$post = new Post($_SESSION["user_id"], $_POST["region"], $_POST["duration"], 
-				$_GET["id"], $_POST["apartment_id"], $_POST["price"]);
+				$product_id, $apartment_id, $_POST["price"]);
 		$post->save();
+
 		return redirect("my_posts");
 	}
 

@@ -2,10 +2,12 @@
 
 require_once('partials/header.php');
 
+$id = isset($_GET["product_id"]) ? $_GET["product_id"] : $_GET["apartment_id"];
+
 ?>
 
 <div class="container" id="add_product_form">
-<form class="form-horizontal col-md-5 col-md-offset-4" method="post" action="post_product?id=<?= $_GET["id"] ?>" enctype="multipart/form-data">
+<form class="form-horizontal col-md-5 col-md-offset-4" method="post" action="post?id=<?= $id ?>" enctype="multipart/form-data">
 	<h2 class="text-center">Post Form</h2>
 	<div class="form-group">
 		<label class="control-label col-sm-4" for="name">Region:</label>
@@ -13,6 +15,10 @@ require_once('partials/header.php');
 			<input name="region" required type="text" class="form-control" id="region" placeholder="Enter Region">
 		</div>
 	</div>
+
+	<?php if (isset($_GET["apartment_id"])): ?>
+		<input hidden name="apartment" value="true">
+	<?php endif; ?>
 
 	<div class="form-group">
 		<label class="control-label col-sm-4" for="description">Duration (in days):</label>

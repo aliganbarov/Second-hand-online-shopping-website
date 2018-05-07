@@ -67,8 +67,8 @@ class PagesController {
 	/**
 	 * Show the post product page
 	 */
-	public function post_product() {
-		return view('post_product');
+	public function post() {
+		return view('post');
 	}
 
 

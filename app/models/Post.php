@@ -61,10 +61,13 @@ class Post {
 	public static function getAllPostsOfUser() {
 		$queryBuilder = new QueryBuilder();
 		$posts = $queryBuilder->selectFilter('Post', "user_id={$_SESSION["user_id"]}");
-		// attach related product and user to each post object
+		// attach related product and apartment to each post object
 		foreach ($posts as $post) {
-			$product = $queryBuilder->selectFilter('Product', "id={$post->product_id}");
-			$post->product = $product;
+			if (isset($post->product_id)) {
+				$post->product = $queryBuilder->selectFilter('Product', "id={$post->product_id}");
+			} else {
+				$post->apartment = $queryBuilder->selectFilter('Apartment', "id={$post->apartment_id}");
+			}
 		}
 		return $posts;
 	}
