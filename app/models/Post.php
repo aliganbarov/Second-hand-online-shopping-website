@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Database\QueryBuilder;
+use App\Models\Product;
 
 class Post {
 
@@ -88,5 +89,24 @@ class Post {
 	public function delete($id) {
 		$queryBuilder = new QueryBuilder();
 		$queryBuilder->delete("Post", "id={$id}");
+	}
+
+
+	/**
+	 * Get Post information
+	 *
+	 * @param int $id
+	 */
+	public static function getPost($id) {
+		$queryBuilder = new QueryBuilder();
+		$post = $queryBuilder->selectFilter("Post", "id={$id}");
+		$post[0]->user = $queryBuilder->selectFilter("User", "id={$post[0]->user_id}");
+		if (isset($post[0]->product_id)) {
+			$post[0]->product = Product::getProduct($post[0]->product_id);
+		}
+		if (isset($post[0]->apartment_id)) {
+			$post[0]->apartment = $queryBuilder->selectFilter("Apartment", "id={$post[0]->apartment_id}");
+		}
+		return $post;
 	}
 }

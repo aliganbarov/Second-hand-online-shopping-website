@@ -78,4 +78,12 @@ class PagesController {
 		return view('my_posts', Post::getAllPostsOfUser());
 	}
 
+
+	/**
+	 * Show the post details page
+	 */
+	public function post_details() {
+		return view('post_details', Post::getPost($_GET["id"]));
+	}
+
 }

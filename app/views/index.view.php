@@ -32,6 +32,7 @@
 					<th>Region</th>
 					<th>Name</th>
 					<th>Description</th>
+					<th>Price</th>
 					<th>Option</th>
 				</tr>
 			</thead>
@@ -44,7 +45,8 @@
 					<td><?= $post->region ?></td>
 					<td><?= $post->product->name ?> </td>
 					<td><?= $post->product->description ?> </td>
-					<td><a href="/SecondHand/post_details.php?id=<?= $post->id ?>">Details</a></td>
+					<td><?= $post->price ?> TL</td>
+					<td><a href="post_details?id=<?= $post->id ?>">Details</a></td>
 				</tr>
 				<?php
 				}

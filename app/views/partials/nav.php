@@ -5,15 +5,15 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li ><a href="/">Home</a></li>
-			<li ><a href="/">Profile</a></li>
 			<?php if (isset($_SESSION["login"])): ?>
+				<li ><a href="/">Profile</a></li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Products
 					<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/my_products">My Products</a></li>
 						<li><a href="/add_product">Add Product</a></li>
-						<li><a href="/my_posts">My Posts</a></li>
+						<li ><a href="/my_posts">My Posts</a></li>
 					</ul>
 				</li>
 			<?php endif; ?>
