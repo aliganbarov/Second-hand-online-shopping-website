@@ -18,5 +18,5 @@ Developed using  Html, CSS, Bootstrap, MySQL, PHP
 - Install xampp
 - Run mysql
 - Set database credentials in config.php file
-- run ''' php -S localhost:8000 '''
-- visit in browser ''' localhost:8000 '''
+- run ` php -S localhost:8000 `
+- visit in browser ` localhost:8000 `
