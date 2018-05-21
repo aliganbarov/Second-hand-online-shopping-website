@@ -86,7 +86,7 @@ class User {
 		$user[0]->posts = Post::getAllPostsOfUser($user[0]->id);
 		$user[0]->avg_rate = $queryBuilder->getUserAvgRate($user[0]->id);
 
-		$user[0]->comments = $queryBuilder->selectFilter("Comment", "to_user_id={$id}");
+		$user[0]->comments = $queryBuilder->selectFilter("Comment", "to_user_id={$id} ORDER BY date_ DESC");
 		foreach($user[0]->comments as $comment) {
 			$comment->from_user = $queryBuilder->selectFilter("User", "id={$comment->from_user_id}");
 		}

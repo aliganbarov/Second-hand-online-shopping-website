@@ -7,7 +7,7 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/companies">Companies</a></li>
 			<?php if (isset($_SESSION["login"])): ?>
-				<li ><a href="/">Profile</a></li>
+				<li ><a href="/view_user?id=<?= $_SESSION["user_id"] ?>">Profile</a></li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Products
 					<span class="caret"></span></a>

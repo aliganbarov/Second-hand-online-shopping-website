@@ -118,7 +118,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2>Average Rating: &nbsp;<?= $user->avg_rate[0]->avg_rate == null ? 0 : $user->avg_rate[0]->avg_rate ?>&nbsp;<i class="fa fa-star" aria-hidden="true"></i></h2>
+		<h2>Average Rating: &nbsp;<?= $user->avg_rate[0]->avg_rate == null ? 0 : round($user->avg_rate[0]->avg_rate, 2) ?>&nbsp;<i class="fa fa-star" aria-hidden="true"></i></h2>
 		<h3>Rate</h3>
 		<div class="list-group col-md-2">
 			<a href="rate_user?rate=5&to_user_id=<?= $user->id ?>" class="list-group-item list-group-item-success" title="Perfect">

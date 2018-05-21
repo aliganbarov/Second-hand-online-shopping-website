@@ -48,7 +48,9 @@ class UserController {
 	 * Store rate given to user
 	 */
 	public function rate_user() {
-		Rate::save($_SESSION["user_id"], $_GET["to_user_id"], $_GET["rate"]);
+		if ($_SESSION["user_id"] != $_GET["to_user_id"]) {
+			Rate::save($_SESSION["user_id"], $_GET["to_user_id"], $_GET["rate"]);
+		}
 		return redirect("view_user?id={$_GET["to_user_id"]}");
 	}
 
